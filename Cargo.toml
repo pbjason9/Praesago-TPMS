@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "tmps-core",
+    "tmps-cli",
+]
+
+resolver = "2"

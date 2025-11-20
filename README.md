@@ -1,8 +1,8 @@
-# Praesago-TPMS
+# Praesago-TMPS
 
-ersion 1.0 — Model Encryption & Packaging
+ersion 1.0 — Model Encryption \& Packaging
 
-The Praesago Trusted Model Packaging & Signing (TMPS) Toolkit provides a secure, standardized mechanism to package machine learning models for protected distribution.
+The Praesago Trusted Model Packaging \& Signing (TMPS) Toolkit provides a secure, standardized mechanism to package machine learning models for protected distribution.
 Version 1 focuses on one core capability:
 
 Encrypt a model file using enterprise-grade cryptography and produce a corresponding YAML manifest that records encryption metadata and integrity information.
@@ -21,7 +21,7 @@ Generate a ciphertext file (model.enc)
 
 Compute SHA-256 integrity hashes (plaintext and ciphertext)
 
-Generate a YAML manifest (model_package.yaml) containing:
+Generate a YAML manifest (model\_package.yaml) containing:
 
 model metadata
 
@@ -65,53 +65,54 @@ Full AI model provenance and attestation
 
 Project Structure
 praesago-tmps/
-  tmps-core/      # Rust library: crypto & manifest generation
-  tmps-cli/       # CLI to package & encrypt models
-  docs/           # Architecture, design notes, schema definitions
-  scripts/        # Developer setup scripts (Linux/Windows)
+tmps-core/      # Rust library: crypto \& manifest generation
+tmps-cli/       # CLI to package \& encrypt models
+docs/           # Architecture, design notes, schema definitions
+scripts/        # Developer setup scripts (Linux/Windows)
 
 Usage (v1)
 Encrypt a model file
-tmps package \
-  --model ./model.onnx \
-  --output-dir ./out \
-  --model-id my-model-001 \
-  --name "Lane Detection" \
-  --version "1.0.0" \
-  --format "onnx" \
-  --key-ref "model-key-001" \
-  --key-hex "<32-byte-hex-key>"
+tmps package   
+--model ./model.onnx   
+--output-dir ./out   
+--model-id my-model-001   
+--name "Lane Detection"   
+--version "1.0.0"   
+--format "onnx"   
+--key-ref "model-key-001"   
+--key-hex "<32-byte-hex-key>"
 
 Outputs
 out/
-  model.enc             # AES-256-GCM encrypted model
-  model_package.yaml    # Metadata and integrity manifest
+model.enc             # AES-256-GCM encrypted model
+model\_package.yaml    # Metadata and integrity manifest
 
 Example Manifest
 model:
-  id: "my-model-001"
-  name: "Lane Detection"
-  version: "1.0.0"
-  format: "onnx"
-  original_filename: "model.onnx"
+id: "my-model-001"
+name: "Lane Detection"
+version: "1.0.0"
+format: "onnx"
+original\_filename: "model.onnx"
 
 encryption:
-  backend: "openssl-3.0"
-  algorithm: "AES-256-GCM"
-  key_ref: "model-key-001"
-  ciphertext_file: "model.enc"
-  iv_hex: "b3c7fa21d9ab45ae11223344"
-  tag_hex: "a7f1c4e298ff120947aabbccddeeff00"
-  created_at: "2025-11-18T10:00:10Z"
+backend: "openssl-3.0"
+algorithm: "AES-256-GCM"
+key\_ref: "model-key-001"
+ciphertext\_file: "model.enc"
+iv\_hex: "b3c7fa21d9ab45ae11223344"
+tag\_hex: "a7f1c4e298ff120947aabbccddeeff00"
+created\_at: "2025-11-18T10:00:10Z"
 
 integrity:
-  plaintext_sha256: "<sha256-hash-of-model.onnx>"
-  ciphertext_sha256: "<sha256-hash-of-model.enc>"
+plaintext\_sha256: "<sha256-hash-of-model.onnx>"
+ciphertext\_sha256: "<sha256-hash-of-model.enc>"
 
 packaging:
-  schema_version: "1.0.0"
-  tool: "praesago-tmps"
-  tool_version: "0.1.0"
+schema\_version: "1.0.0"
+tool: "praesago-tmps"
+tool\_version: "0.1.0"
+
 
 
 This manifest forms the basis for downstream verification, signing, and provenance.
@@ -136,7 +137,7 @@ Roadmap
 
 Upcoming releases will introduce:
 
-Digital Signatures & Chain of Trust
+Digital Signatures \& Chain of Trust
 
 Ed25519 / ECDSA signing
 
@@ -160,7 +161,7 @@ Hardware-bound private keys
 
 Restricted key policies
 
-AI Dataset & Model Provenance
+AI Dataset \& Model Provenance
 
 Dataset hashing
 
@@ -175,6 +176,7 @@ Linux / macOS
 cargo build --workspace
 
 
+
 Dependencies:
 
 sudo apt-get install libssl-dev pkg-config
@@ -183,7 +185,7 @@ Windows
 
 Install OpenSSL 3.x
 
-Set OPENSSL_DIR or update system PATH
+Set OPENSSL\_DIR or update system PATH
 
 Then run:
 
@@ -201,3 +203,4 @@ the secure model encryption workflow
 the basis for future trust, signing, and provenance layers
 
 This version is production-grade for controlled environments and will expand rapidly in future releases.
+
